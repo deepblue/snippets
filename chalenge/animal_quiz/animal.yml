@@ -1,0 +1,24 @@
+--- 
+:animals: 
+- !binary |
+  7L2U64G866as
+
+- !binary |
+  7IKs7J6Q
+
+- !binary |
+  6riw66aw
+
+:questions: 
+- - "\xEC\x9C\xA1\xEC\x8B\x9D\xEC\x9D\xB4\xEC\x95\xBC?"
+  - - !binary |
+      7IKs7J6Q
+
+  - []
+
+- - "\xEB\xAA\xA9\xEC\x9D\xB4 \xEA\xB8\xB8\xEC\x96\xB4?"
+  - - !binary |
+      6riw66aw
+
+  - []
+
