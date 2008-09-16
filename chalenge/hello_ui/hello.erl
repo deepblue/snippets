@@ -17,7 +17,7 @@ hello() ->
 
   Message = gs:window(S,[{title,"Hello"},{width,250},{height,70}]),
   gs:create(label,text,Message,[{y,0},{x,0},{width,250},
-		       {label,{text,"Erlang Graphic System"}}]),
+		       {label,{text,"Erlang Graphics System"}}]),
   gs:create(button,hellook,Message,[{y,30},{x,100},{width,50},
 		       {label,{text,"OK"}}]),		       
 

@@ -3,7 +3,7 @@ IN: hello
 
 : open-label-window ( -- )
   <pile> 1 >>fill
-  "Factor Widget" <label> 20 <border> add-gadget
+  "Factor Gadget" <label> 20 <border> add-gadget
   "OK" [ close-window ] <bevel-button> add-gadget
   "Alert" open-window ;
 
