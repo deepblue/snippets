@@ -72,7 +72,7 @@ def run_example():
     CONSUMER_SECRET = 'YOUR SECRET'
     client = SpringnoteClient(CONSUMER_TOKEN, CONSUMER_SECRET)
 
-    get request token
+    # get request token
     print '* Obtain a request token ...'
     pause()
     token = client.fetch_request_token()
