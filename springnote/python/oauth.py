@@ -7,8 +7,8 @@ import hmac
 import base64
 
 VERSION = '1.0' # Hi Blaine!
-HTTP_METHOD = 'GET'
-SIGNATURE_METHOD = 'PLAINTEXT'
+HTTP_METHOD = 'POST'
+SIGNATURE_METHOD = 'HMAC-SHA1'
 
 # Generic exception class
 class OAuthError(RuntimeError):

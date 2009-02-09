@@ -9,9 +9,9 @@ SPRINGNOTE_PROTOCOL = 'http'
 SPRINGNOTE_SERVER = 'api.springnote.com'
 SPRINGNOTE_PORT = 80
 
-REQUEST_TOKEN_URL = 'https://api.openmaru.com/oauth/request_token'
-ACCESS_TOKEN_URL = 'https://api.openmaru.com/oauth/access_token/springnote'
-AUTHORIZATION_URL = 'https://api.openmaru.com/oauth/authorize'
+REQUEST_TOKEN_URL = 'https://api.springnote.com/oauth/request_token'
+ACCESS_TOKEN_URL  = 'https://api.springnote.com/oauth/access_token'
+AUTHORIZATION_URL = 'https://api.springnote.com/oauth/authorize'
 
 
 class SpringnoteClient(oauth.OAuthClient):
@@ -25,7 +25,7 @@ class SpringnoteClient(oauth.OAuthClient):
         oauth_request = oauth.OAuthRequest.from_consumer_and_token(self.consumer, http_url=REQUEST_TOKEN_URL)
         oauth_request.sign_request(self.signature_method, self.consumer, None)
 
-        connection = httplib.HTTPSConnection("%s:%d" % ('api.openmaru.com', 443))
+        connection = httplib.HTTPSConnection("%s:%d" % (SPRINGNOTE_SERVER, 443))
         connection.request(oauth_request.http_method, REQUEST_TOKEN_URL, headers=oauth_request.to_header()) 
         response = connection.getresponse()
         return oauth.OAuthToken.from_string(response.read())
@@ -38,9 +38,9 @@ class SpringnoteClient(oauth.OAuthClient):
         
     def fetch_access_token(self, token):
         oauth_request = oauth.OAuthRequest.from_consumer_and_token(self.consumer, token=token, http_url=ACCESS_TOKEN_URL)
-        oauth_request.sign_request(self.signature_method, self.consumer, None)
+        oauth_request.sign_request(self.signature_method, self.consumer, token)
 
-        connection = httplib.HTTPSConnection("%s:%d" % ('api.openmaru.com', 443))
+        connection = httplib.HTTPSConnection("%s:%d" % (SPRINGNOTE_SERVER, 443))
         connection.request(oauth_request.http_method, ACCESS_TOKEN_URL, headers=oauth_request.to_header()) 
         response = connection.getresponse()
         self.access_token = oauth.OAuthToken.from_string(response.read())
@@ -57,7 +57,6 @@ class SpringnoteClient(oauth.OAuthClient):
             parameters['domain'] = domain
             url += "?domain=%s" % domain
         
-        print url
         oauth_request = oauth.OAuthRequest.from_consumer_and_token(self.consumer, token=self.access_token, http_method='GET', http_url=url, parameters=parameters)
         oauth_request.sign_request(self.signature_method, self.consumer, self.access_token)        
 
